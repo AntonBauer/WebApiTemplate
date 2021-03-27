@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using WebApiTemplate.Application.UseCases.Greeting;
 
 namespace WebApiTemplate.WebApi.Controllers
 {
@@ -6,6 +9,14 @@ namespace WebApiTemplate.WebApi.Controllers
     [ApiController]
     public class TestController : ControllerBase
     {
-        public string Test() => "Hello world";
+        private readonly IMediator _mediator;
+
+        public TestController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<string>> Test() => await _mediator.Send(new TestQuery());
     }
 }
