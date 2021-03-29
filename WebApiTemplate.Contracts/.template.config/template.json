@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Anton Bauer",
+  "classifications": [ "Common", "WebAPI" ],
+  "identity": "ABauer.ContractsTemplate.CSharp",
+  "name": "Contracts project template",
+  "shortName": "contracts",
+  "tags": {
+    "language": "C#",
+    "type":  "project"
+  }
+}

@@ -7,6 +7,6 @@ namespace WebApiTemplate.Application.Extensions
     public static class ServiceCollectionExtensions
     {
         public static IServiceCollection AddUseCases(this IServiceCollection services) =>
-            services.AddTransient<IRequestHandler<TestQuery, string>, TestRequestHandler>();
+            services.AddTransient<IRequestHandler<IRequest<string>, string>, GreetingQueryHandler>();
     }
 }

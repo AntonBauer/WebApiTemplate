@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using WebApiTemplate.Application.Extensions;
 
 namespace WebApiTemplate.WebApi
 {
@@ -11,13 +10,15 @@ namespace WebApiTemplate.WebApi
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddUseCases()
-                    .AddSwaggerGen(options => 
+            services.AddSwaggerGen(options => 
                     {
                         options.SwaggerDoc("v01", new OpenApiInfo { Title = "API Doc", Version = "v0.1" });
                     })
                     .AddMediatR(typeof(Startup))
                     .AddControllers();
+
+            // Add use cases from application project
+            //services.AddUseCases();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
